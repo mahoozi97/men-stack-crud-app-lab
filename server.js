@@ -34,7 +34,7 @@ connectToDB();
 app.get("/cars", getAllCars);
 
 app.get("/cars/new", (req, res) => {
-  res.render("addCar.ejs");
+  res.render("add-car.ejs");
 });
 
 app.post("/cars", createCar);

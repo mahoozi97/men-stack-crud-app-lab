@@ -5,7 +5,7 @@ const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find();
     console.log("✅ Fetched all cars:", cars);
-    res.render("allCars.ejs", { cars });
+    res.render("all-cars.ejs", { cars });
   } catch (error) {
     console.error("❌ Error fetching all cars:", error);
     res.send({ message: "Failed to fetch all cars" });
@@ -49,9 +49,12 @@ const getCarById = async (req, res) => {
 const getCarForEdit = async (req, res) => {
   try {
     const id = req.params.id;
+    if (!id) {
+      return res.send("Car does not exist");
+    }
     const car = await Car.findById(id);
     console.log("Editing car: ", car);
-    res.render("editCar.ejs", { car });
+    res.render("edit-car.ejs", { car });
   } catch (error) {
     console.error("❌ Error fetching car for edit:", error);
     res.send({ message: "Failed to fetch and edit the car" });
