@@ -4,20 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="stylesheet" href="/add-edit.css" />
   </head>
   <body>
+    <nav>
+      <a href="/cars">Home</a>
+    </nav>
+    <hr />
+
     <form action="/cars/<%=car._id%>?_method=PUT" method="POST">
-      <p>
-        Make
-        <input name="make" type="text" value="<%= car.make%>" />
-      </p>
+      <label for="">Make</label>
+      <input name="make" type="text" value="<%= car.make%>" />
 
-      <p>
-        Model
-        <input name="model" type="text" value="<%= car.model%>" />
-      </p>
+      <label for="">Model</label>
+      <input name="model" type="text" value="<%= car.model%>" />
 
-      <p>Year <input name="year" type="text" value="<%= car.year%>" /></p>
+      <label for="">Year</label>
+      <input name="year" type="text" value="<%= car.year%>" />
 
       <button type="submit">Edit</button>
     </form>

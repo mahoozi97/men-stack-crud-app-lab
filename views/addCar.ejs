@@ -4,31 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
+    <link rel="stylesheet" href="/add-edit.css" />
   </head>
   <body>
     <nav>
       <a href="/cars">Home</a>
     </nav>
-    <hr>
-    
+    <hr />
+
     <form action="/cars" method="POST">
-      <p>
-        Make
-        <input name="make" type="text" placeholder="Toyota - Honda - BMW" />
-      </p>
+      <label for="">Make</label>
+      <input name="make" type="text" placeholder="Toyota - Honda - BMW" />
 
-      <p>
-        Model
-        <input
-          name="model"
-          type="text"
-          placeholder="Corolla - Accord - Yukon"
-        />
-      </p>
+      <label for="">Model</label>
+      <input name="model" type="text" placeholder="Corolla - Accord - Yukon" />
 
-      <p>
-        Year <input name="year" type="text" placeholder="2022 - 2010 - 2015" />
-      </p>
+      <label for="">Year</label>
+      <input name="year" type="text" placeholder="2022 - 2010 - 2015" />
 
       <button type="submit" value="OK">Add</button>
     </form>

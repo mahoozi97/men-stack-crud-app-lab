@@ -1,0 +1,109 @@
+const mongoose = require("mongoose");
+const Car = require("../model/carModel");
+
+const getAllCars = async (req, res) => {
+  try {
+    const cars = await Car.find();
+    console.log("✅ Fetched all cars:", cars);
+    res.render("allCars.ejs", { cars });
+  } catch (error) {
+    console.error("❌ Error fetching all cars:", error);
+    res.send({ message: "Failed to fetch all cars" });
+  }
+};
+
+const createCar = async (req, res) => {
+  try {
+    const make = req.body.make;
+    const model = req.body.model;
+    const year = req.body.year;
+    console.log(make, model, year);
+    if (!make || !model || !year) {
+      return res.send("Please Enter all information of car");
+    }
+    const newCar = await Car.create({ make, model, year });
+    console.log("✅ car added successfully:", newCar);
+    res.redirect("/cars");
+  } catch (error) {
+    console.error("❌ Error adding new car:", error);
+    res.send({ message: "Failed to add new cars" });
+  }
+};
+
+const getCarById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+    if (!id) {
+      return res.send("Car does not exist");
+    }
+    const car = await Car.findById(id);
+    console.log("Car details:", car);
+    res.render("car.ejs", { car });
+  } catch (error) {
+    console.error("❌ Error fetching car:", error);
+    res.send({ message: "Failed to fetch the car" });
+  }
+};
+
+const getCarForEdit = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const car = await Car.findById(id);
+    console.log("Editing car: ", car);
+    res.render("editCar.ejs", { car });
+  } catch (error) {
+    console.error("❌ Error fetching car for edit:", error);
+    res.send({ message: "Failed to fetch and edit the car" });
+  }
+};
+
+const updateCar = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const make = req.body.make;
+    const model = req.body.model;
+    const year = req.body.year;
+    console.log(id, make, model, year);
+    if (!make || !model || !year) {
+      return res.send("Please enter all information of car");
+    }
+    // id, req.body {new: true} //shorter code.
+    const updatedCar = await Car.findByIdAndUpdate(id, {
+      make,
+      model,
+      year,
+      new: true,
+    });
+    console.log("✅ Car updated successfully:", updatedCar);
+    res.redirect("/cars");
+  } catch (error) {
+    console.error("❌ Error updating car:", error);
+    res.send({ message: "Failed to update the car" });
+  }
+};
+
+const deleteCar = async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log(id);
+    if (!id) {
+      return res.send("Car does not exist");
+    }
+    const deletedCar = await Car.findByIdAndDelete(id);
+    console.log("✅ Car deleted successfully:", deletedCar);
+    res.redirect("/cars");
+  } catch (error) {
+    console.error("❌ Error deleting car:", error);
+    res.send({ message: "Failed to delete the car" });
+  }
+};
+
+module.exports = {
+  getAllCars,
+  createCar,
+  getCarById,
+  getCarForEdit,
+  updateCar,
+  deleteCar,
+};

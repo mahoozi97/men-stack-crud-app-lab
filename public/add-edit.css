@@ -1,0 +1,16 @@
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+input {
+  display: block;
+  width: 200px;
+  padding: 5px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 5px 15px;
+}

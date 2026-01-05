@@ -15,30 +15,18 @@ const carSchema = new mongoose.Schema({
   },
 });
 
+// modifying data before it's saved to the database.
+carSchema.pre("save", function () {
+  
+  if (this.make) {
+    this.make = this.make[0].toUpperCase() + this.make.slice(1);
+  }
+
+  if (this.model) {
+    this.model = this.model[0].toUpperCase() + this.model.slice(1);
+  }
+});
+
 const Car = mongoose.model("Car", carSchema);
 
 module.exports = Car;
-
-const create = async (req, res) => {
-  try {
-    const newCar = await Car({ ...req.body });
-    await newCar.save();
-    res.status(200).send({
-      message: "Travel posted successfully",
-      car: newCar,
-    });
-  } catch (error) {
-    console.error("Error creating new car:", error);
-    res.status(500).send({ message: "Failed to create a new car" });
-  }
-};
-
-const read = async (req,res) => {
-  try {
-    const cars = await Car.find()
-    res.status(200).send(cars)
-  } catch (error) {
-    console.error("Error fetching cars:", error);
-    res.status(500).send({ message: "Failed to fetch all cars" });
-  }
-}

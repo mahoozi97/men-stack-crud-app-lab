@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  background-color: black;
+  color: white;
+  max-width: 700px;
+  padding: 6px 0;
+  font-family: Arial, sans-serif;
+}
+
+.car {
+  display: flex;
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+  max-width: 700px;
+  font-family: Arial, sans-serif;
+}
+
+.id {
+  width: 250px;
+}
+
+.make {
+  width: 150px;
+}
+
+.model {
+  width: 150px;
+}
+
+.year {
+  width: 80px;
+}
