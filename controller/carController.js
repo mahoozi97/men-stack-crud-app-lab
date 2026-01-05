@@ -34,11 +34,11 @@ const getCarById = async (req, res) => {
   try {
     const id = req.params.id;
     console.log(id);
-    if (!id) {
-      return res.send("Car does not exist");
-    }
     const car = await Car.findById(id);
     console.log("Car details:", car);
+    if (car === null) {
+      return res.send("Car does not exist");
+    }
     res.render("car.ejs", { car });
   } catch (error) {
     console.error("❌ Error fetching car:", error);
@@ -49,11 +49,11 @@ const getCarById = async (req, res) => {
 const getCarForEdit = async (req, res) => {
   try {
     const id = req.params.id;
-    if (!id) {
-      return res.send("Car does not exist");
-    }
     const car = await Car.findById(id);
     console.log("Editing car: ", car);
+    if (car === null) {
+      return res.send("Car does not exist");
+    }
     res.render("edit-car.ejs", { car });
   } catch (error) {
     console.error("❌ Error fetching car for edit:", error);
