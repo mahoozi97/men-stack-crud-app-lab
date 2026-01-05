@@ -23,7 +23,9 @@
       <label for="">Year</label>
       <input name="year" type="number" value="<%= car.year%>" />
 
+      <button type="reset">Reset</button>
       <button type="submit">Edit</button>
+      <a href="/cars/<%=car._id%>"><button type="button">Cancel</button></a>
     </form>
   </body>
 </html>
