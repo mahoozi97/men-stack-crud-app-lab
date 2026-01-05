@@ -11,7 +11,6 @@
     <%- include('./partials/nav') %>
     <hr />
     <div class="header">
-      <span class="id"><h3>ID</h3></span>
       <span class="make"><h3>Make</h3></span>
       <span class="model"><h3>Model</h3></span>
       <span class="year"><h3>Year</h3></span>
@@ -19,10 +18,10 @@
 
     <% cars.forEach(car => { %>
     <div class="car">
-      <span class="id"><%= car._id %></span>
       <span class="make"><%= car.make %></span>
       <span class="model"><%= car.model %></span>
       <span class="year"><%= car.year %></span>
+      <a href="/cars/<%=car._id%>">See Details</a>
     </div>
     <% }) %>
   </body>

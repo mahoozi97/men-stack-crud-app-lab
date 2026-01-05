@@ -79,7 +79,7 @@ const updateCar = async (req, res) => {
       new: true,
     });
     console.log("✅ Car updated successfully:", updatedCar);
-    res.redirect("/cars");
+    res.redirect(`/cars/${id}`);
   } catch (error) {
     console.error("❌ Error updating car:", error);
     res.send({ message: "Failed to update the car" });

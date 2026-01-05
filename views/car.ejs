@@ -14,20 +14,21 @@
     <hr />
 
     <div class="header">
-      <span class="id"><h3>ID</h3></span>
       <span class="make"><h3>Make</h3></span>
       <span class="model"><h3>Model</h3></span>
       <span class="year"><h3>Year</h3></span>
     </div>
 
-    <form action="/cars/<%=car.id%>?_method=DELETE" method="POST">
-      <div class="car">
-        <span class="id"><%= car._id %></span>
-        <span class="make"><%= car.make %></span>
-        <span class="model"><%= car.model %></span>
-        <span class="year"><%= car.year %></span>
-        <button type="submit">Delete</button>
-      </div>
-    </form>
+    <div class="car">
+      <span class="make"><%= car.make %></span>
+      <span class="model"><%= car.model %></span>
+      <span class="year"><%= car.year %></span>
+
+      <a href="/cars/<%=car._id%>/edit"><button class="btn">Edit</button></a>
+      
+      <form action="/cars/<%=car.id%>?_method=DELETE" method="POST">
+        <button class="btn" type="submit">Delete</button>
+      </form>
+    </div>
   </body>
 </html>
