@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/cars">Home</a>
+    </nav>
+    <hr>
+    
+    <form action="/cars" method="POST">
+      <p>
+        Make
+        <input name="make" type="text" placeholder="Toyota - Honda - BMW" />
+      </p>
+
+      <p>
+        Model
+        <input
+          name="model"
+          type="text"
+          placeholder="Corolla - Accord - Yukon"
+        />
+      </p>
+
+      <p>
+        Year <input name="year" type="text" placeholder="2022 - 2010 - 2015" />
+      </p>
+
+      <button type="submit" value="OK">Add</button>
+    </form>
+  </body>
+</html>

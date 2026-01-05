@@ -1,0 +1,22 @@
+{
+  "name": "men-stack-crud-app-lab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start.dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.1.1",
+    "nodemon": "^3.1.11"
+  }
+}
