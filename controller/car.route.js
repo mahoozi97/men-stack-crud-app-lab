@@ -1,3 +1,4 @@
+const router = require("express").Router()
 const mongoose = require("mongoose");
 const Car = require("../model/carModel");
 
@@ -102,11 +103,20 @@ const deleteCar = async (req, res) => {
   }
 };
 
-module.exports = {
-  getAllCars,
-  createCar,
-  getCarById,
-  getCarForEdit,
-  updateCar,
-  deleteCar,
-};
+router.get("/", getAllCars);
+
+router.get("/new", (req, res) => {
+  res.render("add-car.ejs");
+});
+
+router.post("/", createCar);
+
+router.get("/:id", getCarById);
+
+router.get("/:id/edit", getCarForEdit);
+
+router.put("/:id", updateCar);
+
+router.delete("/:id", deleteCar);
+
+module.exports = router

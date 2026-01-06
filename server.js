@@ -1,14 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-const {
-  getAllCars,
-  createCar,
-  getCarById,
-  getCarForEdit,
-  updateCar,
-  deleteCar
-} = require("./controller/carController");
+const carRoutes = require("./controller/car.route")
 
 require("dotenv").config();
 const PORT = process.env.PORT;
@@ -31,21 +24,7 @@ const connectToDB = async () => {
 };
 connectToDB();
 
-app.get("/cars", getAllCars);
-
-app.get("/cars/new", (req, res) => {
-  res.render("add-car.ejs");
-});
-
-app.post("/cars", createCar);
-
-app.get("/cars/:id", getCarById);
-
-app.get("/cars/:id/edit", getCarForEdit);
-
-app.put("/cars/:id", updateCar);
-
-app.delete("/cars/:id", deleteCar);
+app.use("/cars", carRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} 🔥`);
