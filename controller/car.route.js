@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
 const Car = require("../model/carModel");
 
 const getAllCars = async (req, res) => {
