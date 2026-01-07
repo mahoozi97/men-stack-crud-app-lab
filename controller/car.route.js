@@ -1,4 +1,4 @@
-const router = require("express").Router()
+const router = require("express").Router();
 const mongoose = require("mongoose");
 const Car = require("../model/carModel");
 
@@ -22,7 +22,7 @@ const createCar = async (req, res) => {
     if (!make || !model || !year) {
       return res.send("Please Enter all information of car");
     }
-    const newCar = await Car.create({ make, model, year });
+    const newCar = await Car.create(req.body);
     console.log("✅ car added successfully:", newCar);
     res.redirect("/cars");
   } catch (error) {
@@ -73,12 +73,7 @@ const updateCar = async (req, res) => {
       return res.send("Please enter all information of car");
     }
     // id, req.body {new: true} //shorter code.
-    const updatedCar = await Car.findByIdAndUpdate(id, {
-      make,
-      model,
-      year,
-      new: true,
-    });
+    const updatedCar = await Car.findByIdAndUpdate(id, req.body, { new: true });
     console.log("✅ Car updated successfully:", updatedCar);
     res.redirect(`/cars/${id}`);
   } catch (error) {
@@ -119,4 +114,4 @@ router.put("/:id", updateCar);
 
 router.delete("/:id", deleteCar);
 
-module.exports = router
+module.exports = router;
