@@ -15,13 +15,6 @@ const getAllCars = async (req, res) => {
 
 const createCar = async (req, res) => {
   try {
-    const make = req.body.make;
-    const model = req.body.model;
-    const year = req.body.year;
-    console.log(make, model, year);
-    if (!make || !model || !year) {
-      return res.send("Please Enter all information of car");
-    }
     const newCar = await Car.create(req.body);
     console.log("✅ car added successfully:", newCar);
     res.redirect("/cars");
@@ -34,7 +27,6 @@ const createCar = async (req, res) => {
 const getCarById = async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(id);
     const car = await Car.findById(id);
     console.log("Car details:", car);
     if (car === null) {
@@ -65,14 +57,6 @@ const getCarForEdit = async (req, res) => {
 const updateCar = async (req, res) => {
   try {
     const { id } = req.params;
-    const make = req.body.make;
-    const model = req.body.model;
-    const year = req.body.year;
-    console.log(id, make, model, year);
-    if (!make || !model || !year) {
-      return res.send("Please enter all information of car");
-    }
-    // id, req.body {new: true} //shorter code.
     const updatedCar = await Car.findByIdAndUpdate(id, req.body, { new: true });
     console.log("✅ Car updated successfully:", updatedCar);
     res.redirect(`/cars/${id}`);
@@ -85,7 +69,6 @@ const updateCar = async (req, res) => {
 const deleteCar = async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(id);
     if (!id) {
       return res.send("Car does not exist");
     }

@@ -13,13 +13,31 @@
 
     <form action="/cars" method="POST">
       <label for="make">Make</label>
-      <input id="make" name="make" type="text" placeholder="Toyota - Honda - BMW" />
+      <input
+        id="make"
+        name="make"
+        type="text"
+        placeholder="Toyota - Honda - BMW"
+        required
+      />
 
       <label for="model">Model</label>
-      <input id="model" name="model" type="text" placeholder="Corolla - Accord - Yukon" />
+      <input
+        id="model"
+        name="model"
+        type="text"
+        placeholder="Corolla - Accord - Yukon"
+        required
+      />
 
       <label for="year">Year</label>
-      <input id="year" name="year" type="number" placeholder="2022 - 2010 - 2015" />
+      <input
+        id="year"
+        name="year"
+        type="number"
+        placeholder="2022 - 2010 - 2015"
+        required
+      />
 
       <button>Add</button>
     </form>

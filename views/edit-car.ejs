@@ -13,13 +13,13 @@
 
     <form action="/cars/<%=car._id%>?_method=PUT" method="POST">
       <label for="make">Make</label>
-      <input id="make" name="make" type="text" value="<%= car.make%>" />
+      <input id="make" name="make" type="text" value="<%= car.make%>" required />
 
       <label for="model">Model</label>
-      <input id="model" name="model" type="text" value="<%= car.model%>" />
+      <input id="model" name="model" type="text" value="<%= car.model%>" required />
 
       <label for="year">Year</label>
-      <input id="year" name="year" type="number" value="<%= car.year%>" />
+      <input id="year" name="year" type="number" value="<%= car.year%>" required />
 
       <button type="reset">Reset</button>
       <button type="submit">Edit</button>

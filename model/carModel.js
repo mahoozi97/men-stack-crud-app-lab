@@ -27,6 +27,17 @@ carSchema.pre("save", function () {
   }
 });
 
+carSchema.pre("findOneAndUpdate", function () {
+  const update = this.getUpdate()
+  if (update.make) {
+    update.make = update.make[0].toUpperCase() + update.make.slice(1);
+  }
+
+  if (update.model) {
+    update.model = update.model[0].toUpperCase() + update.model.slice(1);
+  }
+});
+
 const Car = mongoose.model("Car", carSchema);
 
 module.exports = Car;
