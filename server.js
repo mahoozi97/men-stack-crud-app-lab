@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(methodOverride("_method")); // Use the query parameter '_method'
 
 // Middleware to parse URL-encoded form data from POST requests.
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 const connectToDB = async () => {
   try {
