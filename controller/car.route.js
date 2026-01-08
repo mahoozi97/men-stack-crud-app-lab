@@ -86,7 +86,7 @@ router.get("/new", (req, res) => {
   res.render("add-car.ejs");
 });
 
-router.post("/", createCar);
+router.post("/create", createCar);
 
 router.get("/:id", getCarById);
 
